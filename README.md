@@ -23,8 +23,8 @@ The log which is saved contains data such as :
 "timestamp": "2020-03-01T22:00:05"
 ```
 The analytics of logs are displayed on '/dashboard' page.
-![Homepage](https://drive.google.com/file/d/1brqp6o3I1xWwYCqEMNhdXPBZ1gUx9v8Q/view?usp=sharing)
-![Dashboard](https://drive.google.com/file/d/1lBXxuZXjDb6OS_lxqtF7tki8H3l7uffT/view?usp=sharing)
+![Homepage](/homepage.png)
+![Dashboard](/dashboard.png)
 
 ## Setting up the project
 * Create a virtual environment in recently created directory and activate it:
