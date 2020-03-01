@@ -23,7 +23,11 @@ The log which is saved contains data such as :
 "timestamp": "2020-03-01T22:00:05"
 ```
 The analytics of logs are displayed on '/dashboard' page.
+
+## Home page looks like this
 ![Homepage](/homepage.png)
+
+## Dashboard page looks like this
 ![Dashboard](/dashboard.png)
 
 ## Setting up the project
