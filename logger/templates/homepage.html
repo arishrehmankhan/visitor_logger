@@ -1,8 +1,11 @@
-{% extends 'base.html' %} {% block content %}
-<br>
-<h2>Hello {% if user.is_authenticated %} {{ user }} {% else %} visitor {% endif %} </h2>
-<br>
-<p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
-
-<p><a href="{% url 'get-json-data' %}">Download</a> log file</p>
-{% endblock %}
+{% extends 'base.html' %} {% block title %}
+<title>Homepage</title>
+{% endblock %} {% block content %}
+<div class="container">
+    <br>
+    <h2>Hello, {% if user.is_authenticated %} {{ user }} {% else %} visitor {% endif %} </h2>
+    <br>
+    <p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
+    <p><a href="{% url 'get-json-data' %}">Download</a> log file</p>
+    {% endblock %}
+</div>

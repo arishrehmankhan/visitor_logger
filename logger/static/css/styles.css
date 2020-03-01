@@ -1,0 +1,16 @@
+table th {
+    font-weight: 700;
+}
+
+table td {
+    font-size: 2em;
+}
+
+p {
+    font-size: 1.4em;
+    font-weight: 400;
+}
+
+#per-day-chart {
+    background-color: aliceblue;
+}

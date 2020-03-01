@@ -7,7 +7,9 @@ class Log(models.Model):
     method = models.CharField(max_length=6)
     event_name = models.CharField(max_length=1023)
     visited_by = models.CharField(max_length=255)
-    location = models.CharField(max_length=255)
+    location_city = models.CharField(max_length=255)
+    location_region = models.CharField(max_length=255)
+    location_country = models.CharField(max_length=255)
     ip_address = models.CharField(max_length=255)
     timestamp = models.DateTimeField()
     

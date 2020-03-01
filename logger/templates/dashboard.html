@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dashboard</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.12.0/css/mdb.min.css" rel="stylesheet"> {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+    <br>
+    <div class="container-fluid">
+        <h1><b>DASHBOARD :</b></h1>
+        <table class="table table-bordered" style="text-align: center;">
+            <thead>
+                <tr>
+                    <th>Total requests</th>
+                    <th>Requests from anonymous users</th>
+                    <th>Requests from signed in users</th>
+                    <th>Total signed in users who visited homepage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ total_requests }}</td>
+                    <td>{{ total_anonymous_requests }}</td>
+                    <td>{{ total_signed_in_requests }}</td>
+                    <td>{{ total_signed_in_users }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-md-5">
+                <p>Total requests on :</p>
+                <div class="row">
+                    <div class="col-md-8">
+                        <input type="date" class="form-control" id="date" name="date" value="{{ todays_date }}" oninput="getRequestsOnDate(this)">
+                    </div>
+                    <div class="col-md-4">
+                        <p id="requests_on_date">{{ total_requests_today }}</p>
+                    </div>
+                </div>
+                <hr>
+                <p>Total requests between :</p>
+                <div class="row">
+                    <div class="col-md-4">
+                        <input type="date" class="form-control" id="from_date" name="date" value="{{ week_before_date }}" oninput="getNumRequestsBetween(this)">
+                    </div>
+                    <div class="col-md-4">
+                        <input type="date" class="form-control" id="to_date" name="date" value="{{ todays_date }}" oninput="getNumRequestsBetween(this)">
+                    </div>
+                    <div class="col-md-4">
+                        <p id="requests_between_dates">{{ total_requests_in_previous_week }}</p>
+                    </div>
+                </div>
+                <hr>
+                <p style="font-size: 1.4em">Total requests from country : </p>
+                <div class="row">
+                    <div class="col-md-8">
+                        <select class="form-control" onchange="getRequestFromCountry(this)">
+                            <option>Select</option>
+                            {% for country in countries %}
+                            <option value="{{ country.location_country }}">{{ country.location_country }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <p id="requests_from_countries">{{ total_requests }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <canvas id="per-day-chart" width="600" height="350"></canvas>
+            </div>
+        </div>
+    </div>
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.12.0/js/mdb.min.js"></script>
+    <!-- For moment.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    {% load static %}
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+
+</html>
