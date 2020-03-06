@@ -3,7 +3,7 @@ import requests
 def getGeoData(ip):
     # Getting geolocation data from 'ipwhois.io'
     # Free version only allow 10,000 requests / month
-    geolocate_url = 'http://free.ipwhois.io/json/{}'.format(ip)
+    geolocate_url = 'https://free.ipwhois.io/json/{}'.format(ip)
 
     try:
         # Getting geolocation of IP
