@@ -7,7 +7,7 @@ def getGeoData(ip):
 
     try:
         # Getting geolocation of IP
-        geolocate_response = requests.get(geolocate_url) 
+        geolocate_response = requests.get(geolocate_url)
         geolocate_response.raise_for_status()
 
     except requests.exceptions.HTTPError as errh:
@@ -21,8 +21,13 @@ def getGeoData(ip):
 
     except requests.exceptions.RequestException as err:
         print ("Something went wrong: ",err)
-        
-    # Converting response to list
-    geoData = geolocate_response.json()
+          
+    print(geolocate_response.content)
+    if geolocate_response.content == b'':
+        print("Location can't be fetched")
+        return "NULL"
+    else:
+        # Converting response to list
+        geoData = geolocate_response.json()
 
-    return geoData
+        return geoData

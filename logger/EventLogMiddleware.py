@@ -30,10 +30,15 @@ class LogEntry(MiddlewareMixin):
             # all the data which it returns can be found here : https://ipwhois.io/documentation
             geoData = getGeoData(ip_address) 
 
+            if geoData != "NULL":
             # Extracting address from returned data
-            city = geoData['city']
-            region = geoData['region']
-            country = geoData['country']
+                city = geoData['city']
+                region = geoData['region']
+                country = geoData['country']
+            else:
+                city = "unknown"
+                region = "unknown"
+                country = "unknown"
 
             # location of request
             new_log.location_city = city 
